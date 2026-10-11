@@ -1,0 +1,55 @@
+{
+  "name": "Orbit RC validation",
+  "components": [
+    {
+      "id": "v1",
+      "type": "source",
+      "label": "V1",
+      "value": 5,
+      "x": 180,
+      "y": 260
+    },
+    {
+      "id": "r1",
+      "type": "resistor",
+      "label": "R1",
+      "value": 1000,
+      "x": 390,
+      "y": 150
+    },
+    {
+      "id": "c1",
+      "type": "capacitor",
+      "label": "C1",
+      "value": 0.000001,
+      "x": 600,
+      "y": 260
+    },
+    {
+      "id": "g1",
+      "type": "ground",
+      "label": "GND",
+      "value": 0,
+      "x": 390,
+      "y": 400
+    }
+  ],
+  "wires": [
+    {
+      "a": "v1:0",
+      "b": "r1:0"
+    },
+    {
+      "a": "r1:1",
+      "b": "c1:0"
+    },
+    {
+      "a": "c1:1",
+      "b": "v1:1"
+    },
+    {
+      "a": "v1:1",
+      "b": "g1:0"
+    }
+  ]
+}

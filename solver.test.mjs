@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {solve} from './dist/solver.mjs';
+const c=(id,type,value)=>({id,type,value});
+const w=(a,b)=>({a,b});
+const divider={components:[c('v','source',10),c('r1','resistor',1000),c('r2','resistor',1000),c('g','ground',0)],wires:[w('v:0','r1:0'),w('r1:1','r2:0'),w('r2:1','v:1'),w('v:1','g:0')]};
+assert.ok(Math.abs(solve(divider).voltages['r2:0']-5)<1e-10);
+const rc={components:[c('v','source',5),c('r','resistor',1000),c('c','capacitor',1e-6),c('g','ground',0)],wires:[w('v:0','r:0'),w('r:1','c:0'),w('c:1','v:1'),w('v:1','g:0')]};
+assert.ok(Math.abs(solve(rc).voltages['c:0']-5)<1e-10);
+const tr=solve(rc,{transient:true});
+assert.equal(tr.samples[0].voltages['c:0'],0);
+assert.ok(Math.abs(tr.samples[20].voltages['c:0']-5*(1-Math.exp(-1)))<.05,'RC response at one time constant');
+assert.ok(Math.abs(tr.samples.at(-1).voltages['c:0']-5)<1e-6);
+assert.throws(()=>solve({...rc,components:rc.components.filter(c=>c.type!=='ground'),wires:rc.wires.filter(w=>w.b!=='g:0')}),/ground/);
+assert.throws(()=>solve({...rc,wires:rc.wires.slice(0,2)}),/unconnected/);
+assert.throws(()=>solve({...rc,components:[...rc.components,c('r2','resistor',1000)],wires:[...rc.wires,w('r2:0','r2:1')]}),/floating/);
+console.log('PASS: divider DC, RC DC, RC time constant and settling, missing ground, open pins, floating node.');

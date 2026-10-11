@@ -1,0 +1,10 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-10T19:10:10-0500",
+    "kicad_version": "9.0.7",
+    "schematic_parity": [],
+    "source": "rc-rotated.kicad_pcb",
+    "unconnected_items": [],
+    "violations": []
+}
