@@ -8,13 +8,15 @@ A browser-based circuit and PCB editor focused on simple interactions: place par
 
 ## Try it locally
 
+This repository contains the source code; it does not currently provide a public live demo. To run the app on your computer, download or clone this repository and open a terminal in its folder.
+
 No dependency installation or build step is needed. With Python 3 installed:
 
 ```sh
 python3 -m http.server 5173 --bind 127.0.0.1 --directory dist
 ```
 
-Open **http://127.0.0.1:5173**. The app starts with an RC circuit.
+Keep that terminal running, then enter `http://127.0.0.1:5173` in your browser on the same computer. This is a local address, not a hosted website; it will only work while the server is running. The app starts with an RC circuit.
 
 1. **Design:** add resistors, capacitors, a voltage source, and ground. Drag parts to move them; pull between pins to connect. Each schematic part has a rotate indicator.
 2. **Simulate:** run the circuit to view DC results and its step response.
