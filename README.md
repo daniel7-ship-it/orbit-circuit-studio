@@ -1,8 +1,8 @@
 # ORBIT — Circuit Studio
 
-A browser-based circuit and PCB editor focused on simple interactions: place parts, pull wires, simulate, and lay out a board. The interface uses a black-and-white cosmic theme.
+A browser-based circuit and PCB editor focused on simple interactions: place parts, pull wires, simulate, and lay out a board. 
 
-**Status:** working prototype under active development. Independently implemented with AI-assisted development; this repository does not contain KiCad or LTspice application code.
+**Status:** working prototype under active development.
 
 ![ORBIT board editor](docs/board-editor.jpg)
 
